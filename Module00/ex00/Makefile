@@ -6,7 +6,7 @@
 #    By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/21 18:15:46 by jabae             #+#    #+#              #
-#    Updated: 2022/12/21 18:22:06 by jabae            ###   ########.fr        #
+#    Updated: 2022/12/21 18:52:31 by jabae            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,6 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJS)
-
-%.o : %.cpp
 
 clean :
 	rm -f $(OBJS)
