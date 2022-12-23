@@ -1,20 +1,8 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/12/21 18:15:46 by jabae             #+#    #+#              #
-#    Updated: 2022/12/21 18:52:31 by jabae            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = megaphone
 
-CC = clang++
+CXX = c++
 
-FLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror
 
 SRCS = megaphone.cpp
 
@@ -23,7 +11,7 @@ OBJS = $(SRCS:.cpp=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(FLAGS) -o $(NAME) $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
 clean :
 	rm -f $(OBJS)
