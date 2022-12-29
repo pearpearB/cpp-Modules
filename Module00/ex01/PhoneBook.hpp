@@ -10,8 +10,7 @@ enum e_field {
 	LAST_NAME,
 	NICKNAME,
 	PHONE_NUMBER,
-	DARKEST_SECRET,
-	FIELD_NUM
+	DARKEST_SECRET
 };
 
 class PhoneBook {
@@ -25,7 +24,7 @@ class PhoneBook {
 		void setContactFeild(int field);
 		void add(void);
 		void search(void);
-		PhoneBook(); // 
+		PhoneBook();
 };
 
 #endif

@@ -68,7 +68,7 @@ void PhoneBook::search(void) {
 		}
 		else break ;
 	}
-	std::cin.ignore(); // ??
+	std::cin.ignore();
 	std::cout << "1. First Name: " << contact[input - 1].getFirstName() << std::endl
 	<< "2. Last Name: " << contact[input - 1].getLastName() << std::endl
 	<< "3. Nickname: " << contact[input - 1].getNickname() << std::endl
