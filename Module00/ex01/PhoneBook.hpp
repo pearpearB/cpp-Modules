@@ -16,8 +16,8 @@ enum e_field {
 class PhoneBook {
 	private:
 		Contact contact[8];
-		int 	idx;
 		bool	full;
+		int 	idx;
 		int 	printPhoneBook(void);
 		void 	setContactFeild(int field);
 
