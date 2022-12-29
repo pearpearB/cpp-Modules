@@ -18,12 +18,12 @@ class PhoneBook {
 		Contact contact[8];
 		int 	idx;
 		bool	full;
+		int 	printPhoneBook(void);
+		void 	setContactFeild(int field);
 
 	public:
-		int printPhoneBook(void);
-		void setContactFeild(int field);
-		void add(void);
-		void search(void);
+		void	add(void);
+		void	search(void);
 		PhoneBook();
 };
 
