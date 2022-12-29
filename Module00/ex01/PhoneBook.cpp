@@ -76,6 +76,4 @@ void PhoneBook::search(void) {
 	<< "5. Darkest Secret: " << contact[input - 1].getDarkestSecret() << std::endl;
 }
 
-PhoneBook::PhoneBook() {
-	idx = 0, full = false;
-}
+PhoneBook::PhoneBook(): idx(0), full(false) {}
