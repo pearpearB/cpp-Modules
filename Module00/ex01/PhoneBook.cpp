@@ -8,7 +8,7 @@ void PhoneBook::setContactFeild(int field) {
 		std::getline(std::cin, input);
 		if (std::cin.eof()) exit(0);
 		if (!input.empty()) break ;
-		std::cout << "Try again!:)" << std::endl;
+		std::cout << "!! Try again" << std::endl;
 	}
 	if (field == FIRST_NAME) contact[idx].setFirstName(input);
 	else if (field == LAST_NAME) contact[idx].setLastName(input);
@@ -22,15 +22,20 @@ void printField(std::string field) {
 	std::cout << std::setw(10) << field << "|";
 }
 
-void PhoneBook::printPhoneBook(void) {
+int PhoneBook::printPhoneBook(void) {
+	if (!idx && !full) {
+		std::cout << "!! PhoneBook is empty" << std::endl;
+		return 0;
+	}
 	std::cout << "|";
 	printField("Index"); printField("FirstName"); printField("LastName"); printField("Nickname");
 	std::cout << std::endl;
-	for (int i = 0; i < idx; i++) { // 8칸 까지 갔다가 앞으로 왔다면?!
-		std::cout << std::setw(10) << i + 1 << "|";
+	for (int i = 0; i < (full ? 8 : idx); i++) {
+		std::cout << "|" << std::setw(10) << i + 1 << "|";
 		printField(contact[i].getFirstName()); printField(contact[i].getLastName()); printField(contact[i].getNickname());
 		std::cout << std::endl;
 	}
+	return 1;
 }
 
 void PhoneBook::add(void) {
@@ -50,19 +55,16 @@ void PhoneBook::add(void) {
 
 void PhoneBook::search(void) {
 	int input;
-	std::cout << "idx: " << idx << std::endl;
-	if (!idx) {
-		std::cout << "PhoneBook is empty" << std::endl;
-		return ;
-	}
+
+	if (!printPhoneBook()) return ;
 	while (true) {
-		std::cout << "Search for Index: " << "\n>";
+		std::cout << "# Search for Index: ";
 		std::cin >> input;
 		if (std::cin.eof()) exit(0);
 		if (std::cin.fail() || input < 1 || input > 8 || (!full && input > idx)) {
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 이거 뭔지 공부하기
-			std::cout << "Search only the index in PhoneBook" << std::endl;
+			std::cout << "!! Search only the index in PhoneBook" << std::endl;
 		}
 		else break ;
 	}

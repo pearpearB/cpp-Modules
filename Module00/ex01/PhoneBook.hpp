@@ -21,8 +21,8 @@ class PhoneBook {
 		bool	full;
 
 	public:
+		int printPhoneBook(void);
 		void setContactFeild(int field);
-		void printPhoneBook(void);
 		void add(void);
 		void search(void);
 		PhoneBook(); // 
