@@ -63,7 +63,7 @@ void PhoneBook::search(void) {
 		if (std::cin.eof()) exit(0);
 		if (std::cin.fail() || input < 1 || input > 8 || (!full && input > idx)) {
 			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 이거 뭔지 공부하기
+			std::cin.ignore();
 			std::cout << "!! Search only the index in PhoneBook" << std::endl;
 		}
 		else break ;
