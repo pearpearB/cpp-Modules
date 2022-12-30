@@ -17,6 +17,21 @@ void PhoneBook::setContactFeild(int field) {
 	else if (field == DARKEST_SECRET) contact[idx].setDarkestSecret(input);
 }
 
+void PhoneBook::add(void) {
+	std::cout << "1. First Name: ";
+	PhoneBook::setContactFeild(FIRST_NAME);
+	std::cout << "2. Last Name: ";
+	PhoneBook::setContactFeild(LAST_NAME);
+	std::cout << "3. Nickname: ";
+	PhoneBook::setContactFeild(NICKNAME);
+	std::cout << "4. Phone Number: ";
+	PhoneBook::setContactFeild(PHONE_NUMBER);
+	std::cout << "5. Darkest Secret: ";
+	PhoneBook::setContactFeild(DARKEST_SECRET);
+	if (idx == 7) full = true;
+	idx = (idx + 1) % 8;
+}
+
 void printField(std::string field) {
 	if (field.length() > 10) field = field.substr(0, 9) + ".";
 	std::cout << std::setw(10) << field << "|";
@@ -36,21 +51,6 @@ int PhoneBook::printPhoneBook(void) {
 		std::cout << std::endl;
 	}
 	return 1;
-}
-
-void PhoneBook::add(void) {
-	std::cout << "1. First Name: ";
-	PhoneBook::setContactFeild(FIRST_NAME);
-	std::cout << "2. Last Name: ";
-	PhoneBook::setContactFeild(LAST_NAME);
-	std::cout << "3. Nickname: ";
-	PhoneBook::setContactFeild(NICKNAME);
-	std::cout << "4. Phone Number: ";
-	PhoneBook::setContactFeild(PHONE_NUMBER);
-	std::cout << "5. Darkest Secret: ";
-	PhoneBook::setContactFeild(DARKEST_SECRET);
-	if (idx == 7) full = true;
-	idx = (idx + 1) % 8;
 }
 
 void PhoneBook::search(void) {
