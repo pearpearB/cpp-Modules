@@ -2,8 +2,8 @@
 
 int main(void) {
 	std::string stringVAR = "HI THIS IS BRAIN";
-	std::string *stringPTR = &stringVAR;
-	std::string &stringREF = stringVAR;
+	std::string* stringPTR = &stringVAR;
+	std::string& stringREF = stringVAR;
 
 	// memory address
 	std::cout << "stringVAR: " << &stringVAR << std::endl;
