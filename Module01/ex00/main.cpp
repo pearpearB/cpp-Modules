@@ -1,10 +1,22 @@
 #include "Zombie.hpp"
 
-int main(void) {
-	Zombie* newZ = newZombie("ping");
+int makeHeapZ(void) {
+	Zombie* newZ = newZombie("heapZ");
+	newZ->announce();
+	delete newZ;
+	return 0;
+}
 
-    randomChump("pong");
-    newZ->announce();
-    delete newZ;
+int main(void) {
+	Zombie defaultZ;
+	defaultZ.announce();
+
+	randomChump("stackZ");
+	
+	makeHeapZ();
+
+	std::cout << "<-----check leaks----->" << std::endl;
+	system("leaks zombie");
+
 	return 0;
 }
