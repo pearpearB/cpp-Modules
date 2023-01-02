@@ -1,10 +1,9 @@
 #include "Zombie.hpp"
 
-int makeHeapZ(void) {
+void makeHeapZ(void) {
 	Zombie* newZ = newZombie("heapZ");
 	newZ->announce();
 	delete newZ;
-	return 0;
 }
 
 int main(void) {
