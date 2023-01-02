@@ -6,7 +6,7 @@ void Zombie::announce(void) {
 
 Zombie::Zombie(std::string name): _name(name) {}
 
-Zombie::Zombie(): Zombie("default") {} // 위임 생성자
+Zombie::Zombie(): _name("default") {}
 
 Zombie::~Zombie() {
 	std::cout << this->_name << " is dead" << std::endl;
