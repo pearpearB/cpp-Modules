@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
 			line.insert(tmp, s2);
 			tmp += s2.length();
 		}
-		fileDst << line << std::endl;
+		fileDst << line;
 	}
 
 	fileSrc.close();
