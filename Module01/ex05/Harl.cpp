@@ -17,13 +17,13 @@ void Harl::error(void) {
 }
 
 void Harl::complain(std::string level) {
-	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	void 				(Harl::*f[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-	int 				idx = -1;
+	void	(Harl::*f[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
-	while (++idx < 4 && level.compare(levels[idx]))
-		;
-	(this->*f[idx])();
-	
-	return;
+	for (int i = 0; i < 4; i++) {
+		if (level == levels[i]) {
+			(this->*f[i])();
+			return ;
+		}
+	}
 }
