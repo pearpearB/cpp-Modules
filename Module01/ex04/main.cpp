@@ -10,7 +10,11 @@ int main(int argc, char **argv) {
 	std::string	s1 = argv[2];
 	std::string	s2 = argv[3];
 	if (s1.empty()) {
-		std::cout << "String1 must exist" << std::endl;
+		std::cout << "<s1> must exist" << std::endl;
+		return 1;
+	}
+	if (!s1.compare(s2)) {
+		std::cout << "<s1> and <s2> must be different" << std::endl;
 		return 1;
 	}
 
