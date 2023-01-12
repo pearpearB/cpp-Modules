@@ -19,7 +19,6 @@ ClapTrap::~ClapTrap() {
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &rhs) {
-	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &rhs) {
 		this->_name = rhs._name;
 		this->_hitPoints = rhs._hitPoints;
