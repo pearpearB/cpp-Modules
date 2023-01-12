@@ -9,7 +9,7 @@ ClapTrap::ClapTrap(std::string name): _name(name), _hitPoints(10), _energyPoints
 	std::cout << "ClapTrap " << this->_name << " constructor created" << std::endl;
 }
 
-ClapTrap::ClapTrap(ClapTrap const &src) {
+ClapTrap::ClapTrap(const ClapTrap &src) {
 	*this = src;
 	std::cout << "ClapTrap " << this->_name << " copy constructor called" << std::endl;
 }
@@ -18,7 +18,7 @@ ClapTrap::~ClapTrap() {
 	std::cout << "ClapTrap " << this->_name << " destructor called" << std::endl;
 }
 
-ClapTrap &ClapTrap::operator=(ClapTrap const &rhs) {
+ClapTrap &ClapTrap::operator=(const ClapTrap &rhs) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &rhs) {
 		this->_name = rhs._name;
