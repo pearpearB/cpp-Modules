@@ -1,8 +1,8 @@
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main(void) {
-	ScavTrap jabae("jabae");
-	ScavTrap jiyokim("jiyokim");
+	FragTrap jabae("jabae");
+	FragTrap jiyokim("jiyokim");
 
 	jabae.attack("jiyokim");
 	jiyokim.takeDamage(20);
@@ -12,7 +12,7 @@ int main(void) {
 	jiyokim.takeDamage(10);
 	jiyokim.beRepaired(10);
 
-	jabae.guardGate();
+	jabae.highFivesGuys();
 	
 	return 0;
 }
