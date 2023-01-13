@@ -25,12 +25,13 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &rhs) {
 		this->_energyPoints = rhs._energyPoints;
 		this->_attackDamage = rhs._attackDamage;
 	}
+
+	std::cout << "ClapTrap " << this->_name << " copy assignment called" << std::endl;
 	return *this;
 }
 
 /* member function */
 void ClapTrap::attack(const std::string &target) {
-
 	if (!this->_hitPoints) {
 		std::cout << "ClapTrap " << this->_name << " is already dead!" << std::endl;
 		return ;
@@ -49,8 +50,8 @@ void ClapTrap::takeDamage(unsigned int amount) {
 		std::cout << "ClapTrap " << this->_name << " is already dead!" << std::endl;
 		return ;
 	}
-	if (this->_hitPoints < amount) {
-		this->_hitPoints = 0;
+	if (this->_hitPoints <= amount) {
+		this->_hitPoints = 0; /* min 값 */
 		std::cout << "ClapTrap " << this->_name << " is die!" << std::endl;
 		return ;
 	}
@@ -70,6 +71,6 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	}
 
 	this->_energyPoints -= 1;
-	this->_hitPoints += amount;
+	this->_hitPoints += amount; /* max 값도 지정해야 했었지 않을까? */
 	std::cout << "ClapTrap " << this->_name << " is repaired " << amount << " points of health!" << std::endl;
 }
