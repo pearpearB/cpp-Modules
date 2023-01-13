@@ -66,7 +66,6 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	}
 	if (!this->_energyPoints) {
 		std::cout << "ClapTrap " << this->_name << " has no energy points!" << std::endl;
-		this->_hitPoints = 10;
 		return ;
 	}
 
