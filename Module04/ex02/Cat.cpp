@@ -1,13 +1,13 @@
 #include "Cat.hpp"
 
 /* orthodox canonical form */
-Cat::Cat(): Animal() {
+Cat::Cat(): AAnimal() {
 	this->_type = "Cat";
 	this->_brain = new Brain();
 	std::cout << "Cat is born" << std::endl;
 }
 
-Cat::Cat(const Cat &src): Animal(src) {
+Cat::Cat(const Cat &src): AAnimal(src) {
 	*this = src;
 	std::cout << "Copy cat is born by copy constructor" << std::endl;
 }
@@ -20,7 +20,7 @@ Cat::~Cat() {
 Cat &Cat::operator=(const Cat &rhs) {
 	if (this != &rhs) {
 		this->_type = rhs._type;
-		this->_brain = new Brain(*rhs._brain); // 조건? NULL이 아니면? 깊은복사!
+		this->_brain = new Brain(*rhs._brain);
 	}
 	std::cout << "Copy cat is born by copy operator" << std::endl;
 	return *this;

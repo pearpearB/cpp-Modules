@@ -1,32 +1,22 @@
-#include "WrongCat.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 
 int main() {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	// {
+	// 	Animal *animals[4] = {new Dog(), new Dog(), new Cat(), new Cat()};
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound();
-	j->makeSound();
-    meta->makeSound();
+	// 	for (int i = 0; i < 4; i++)
+	// 		std::cout << animals[i]->getType() << std::endl;
 
-	delete meta;
-	delete j;
-	delete i;
-
-	std::cout << "----------------------" << std::endl;
-
-	const WrongAnimal* wrong = new WrongAnimal();
-	const WrongAnimal* wrongCat = new WrongCat();
-
-    wrong->makeSound();
-	wrongCat->makeSound();
-
-	delete wrong;
-	delete wrongCat;
+	// 	for (int i = 0; i < 4; i++)
+	// 		delete animals[i];
+	// }
+	// std::cout << std::endl;
+	{
+		Dog	*dog = new Dog();
+		Dog	cloneDog(*dog);
+		delete dog;
+	}
 
 	return 0;
 }
