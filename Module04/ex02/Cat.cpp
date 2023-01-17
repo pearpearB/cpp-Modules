@@ -1,13 +1,12 @@
 #include "Cat.hpp"
 
 /* orthodox canonical form */
-Cat::Cat(): AAnimal() {
+Cat::Cat(): AAnimal(), _brain(new Brain()) {
 	this->_type = "Cat";
-	this->_brain = new Brain();
 	std::cout << "Cat is born" << std::endl;
 }
 
-Cat::Cat(const Cat &src): AAnimal(src) {
+Cat::Cat(const Cat &src): AAnimal(src), _brain(new Brain()) {
 	*this = src;
 	std::cout << "Copy cat is born by copy constructor" << std::endl;
 }
@@ -20,7 +19,7 @@ Cat::~Cat() {
 Cat &Cat::operator=(const Cat &rhs) {
 	if (this != &rhs) {
 		this->_type = rhs._type;
-		this->_brain = new Brain(*rhs._brain);
+		*this->_brain = *rhs._brain;
 	}
 	return *this;
 }

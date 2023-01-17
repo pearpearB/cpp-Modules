@@ -1,13 +1,13 @@
 #include "Cat.hpp"
 
 /* orthodox canonical form */
-Cat::Cat(): Animal() {
+Cat::Cat(): Animal(), _brain(new Brain()) {
 	this->_type = "Cat";
-	this->_brain = new Brain();
 	std::cout << "Cat is born" << std::endl;
 }
 
-Cat::Cat(const Cat &src): Animal(src) {
+Cat::Cat(const Cat &src): Animal(src), _brain(new Brain()) { // _brain(new Brain(*src._brain)) ?
+	// this->_brain = new Brain();
 	*this = src;
 	std::cout << "Copy cat is born by copy constructor" << std::endl;
 }
@@ -20,7 +20,11 @@ Cat::~Cat() {
 Cat &Cat::operator=(const Cat &rhs) {
 	if (this != &rhs) {
 		this->_type = rhs._type;
-		this->_brain = new Brain(*rhs._brain); // 조건? NULL이 아니면? 깊은복사!
+		*this->_brain = *rhs._brain; // 조건? NULL이 아니면이 필요할까? 깊은복사로 만들어주기!
+		// *(this->_brain) = *(rhs._brain); //[1]    55487 bus error  ./animal 
+		// this->_brain = rhs._brain; 		// [1]    55654 abort      ./animal
+											// malloc: *** error for object 0x7fa9de00b600: pointer being freed was not allocated
+		// this->_brain = new Brain(*rhs._brain); // 얕은 복사
 	}
 	return *this;
 }
