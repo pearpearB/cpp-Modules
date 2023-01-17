@@ -15,7 +15,7 @@ AAnimal::~AAnimal() {
 
 AAnimal &AAnimal::operator=(const AAnimal &rhs) {
 	if (this != &rhs)
-		_type = rhs._type;
+		this->_type = rhs._type;
 	return *this;
 }
 
