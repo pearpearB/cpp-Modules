@@ -16,7 +16,6 @@ AAnimal::~AAnimal() {
 AAnimal &AAnimal::operator=(const AAnimal &rhs) {
 	if (this != &rhs)
 		_type = rhs._type;
-	std::cout << "AAnimal copy operator called" << std::endl;
 	return *this;
 }
 

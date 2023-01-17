@@ -26,7 +26,6 @@ Dog &Dog::operator=(const Dog &rhs) {
 										// malloc: *** error for object 0x7fa9de00b600: pointer being freed was not allocated
 		// this->_brain = new Brain(*rhs._brain);
 	}
-	std::cout << "Copy dog is born by copy operator" << std::endl;
 	return *this;
 }
 

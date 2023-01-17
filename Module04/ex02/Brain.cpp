@@ -20,7 +20,6 @@ Brain &Brain::operator=(const Brain &rhs) {
 			this->_ideas[i] = rhs._ideas[i];
 		}
 	}
-	std::cout << "Brain assignation operator called" << std::endl;
 	return *this;
 }
 

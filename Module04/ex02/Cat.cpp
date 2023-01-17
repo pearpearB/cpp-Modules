@@ -22,7 +22,6 @@ Cat &Cat::operator=(const Cat &rhs) {
 		this->_type = rhs._type;
 		this->_brain = new Brain(*rhs._brain);
 	}
-	std::cout << "Copy cat is born by copy operator" << std::endl;
 	return *this;
 }
 

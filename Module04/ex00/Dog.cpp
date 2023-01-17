@@ -18,7 +18,6 @@ Dog::~Dog() {
 Dog &Dog::operator=(const Dog &rhs) {
 	if (this != &rhs)
 		this->_type = rhs._type;
-	std::cout << "Copy dog is born by copy operator" << std::endl;
 	return *this;
 }
 
