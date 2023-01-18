@@ -11,6 +11,7 @@ int main() {
 
 	std::cout << "\n<---increment exception--->" << std::endl;
 	try {
+		normal.incrementGrade();
 		max.incrementGrade();
 		min.incrementGrade();
 		excep.incrementGrade();
@@ -20,10 +21,11 @@ int main() {
 	}
 
 	std::cout << "\n<---increment result--->" << std::endl;
-	std::cout << normal << max << min << excep << std::endl; // 왜 안바뀌죠?
+	std::cout << normal << max << min << excep << std::endl; // max 이후로 catch 문으로 빠져서 바뀌지 않음
 
 	std::cout << "\n<---decrement exception--->" << std::endl;
 	try {
+		normal.decrementGrade();
 		max.decrementGrade();
 		min.decrementGrade();
 		excep.decrementGrade();
