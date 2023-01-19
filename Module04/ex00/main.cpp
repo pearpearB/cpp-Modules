@@ -41,6 +41,9 @@ void testLeaks() {
 		const Animal* animal = new Animal();
 		const Animal* cat = new Cat();
 
+		delete animal;
+		animal = new Cat(); // 내부 값이 아닌 포인터의 가리키는 위치를 바꾸는 것이므로 가능
+
 		*animal = *cat; // error: cannot assign to variable 'animal' with const-qualified type 'const Animal *const'
 	}
 }
