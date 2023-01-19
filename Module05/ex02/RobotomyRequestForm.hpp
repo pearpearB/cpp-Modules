@@ -1,12 +1,13 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
 
+# include <cstdlib>
 # include "AForm.hpp"
 
 class RobotomyRequestForm: public AForm {
 	private:
 		const std::string	_target;
-		static int			_seedFlag; // to initialize srand only once
+
 	public:
 		RobotomyRequestForm();
 		RobotomyRequestForm(std::string const &target);

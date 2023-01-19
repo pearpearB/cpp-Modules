@@ -2,13 +2,11 @@
 
 /* orthodox canonical form */
 RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequestForm", 72, 45), _target("default") {
-	if (!RobotomyRequestForm::_seedFlag++)
-		srand(time(NULL));
+	srand(time(NULL));
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string const &target): AForm("RobotomyRequestForm", 72, 45), _target(target) {
-	if (!RobotomyRequestForm::_seedFlag++)
-		srand(time(NULL));
+	srand(time(NULL));
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src): AForm(src), _target(src._target) { }
