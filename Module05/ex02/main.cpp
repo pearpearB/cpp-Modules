@@ -5,12 +5,17 @@
 
 int main() {
 	std::cout << "RobotomyRequestForm" << std::endl;
-	std::cout << "===== case 1 : valid =====" << std::endl;
+	std::cout << "===== case 1 : valid & random 50% test =====" << std::endl;
 	{
 		RobotomyRequestForm	robotomyRequestForm;
 		Bureaucrat	bureaucrat("bureaucrat", 40);
 		
 		bureaucrat.signForm(robotomyRequestForm);
+		bureaucrat.executeForm(robotomyRequestForm);
+		bureaucrat.executeForm(robotomyRequestForm);
+		bureaucrat.executeForm(robotomyRequestForm);
+		bureaucrat.executeForm(robotomyRequestForm);
+		bureaucrat.executeForm(robotomyRequestForm);
 		bureaucrat.executeForm(robotomyRequestForm);
 	}
 	std::cout << "===== case 2 : invalid =====" << std::endl;
