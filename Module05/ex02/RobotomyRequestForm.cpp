@@ -1,9 +1,15 @@
 #include "RobotomyRequestForm.hpp"
 
 /* orthodox canonical form */
-RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequestForm", 72, 45), _target("default") { }
+RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequestForm", 72, 45), _target("default") {
+	if (!RobotomyRequestForm::_seedFlag++)
+		srand(time(NULL));
+}
 
-RobotomyRequestForm::RobotomyRequestForm(std::string const &target): AForm("RobotomyRequestForm", 72, 45), _target(target) { }
+RobotomyRequestForm::RobotomyRequestForm(std::string const &target): AForm("RobotomyRequestForm", 72, 45), _target(target) {
+	if (!RobotomyRequestForm::_seedFlag++)
+		srand(time(NULL));
+}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src): AForm(src), _target(src._target) { }
 
@@ -27,7 +33,6 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
 	if (executor.getGrade() > this->getGradeToExecute())
 		throw Form::GradeTooLowException();
 	else {
-		srand(time(NULL));
 		if (!rand() % 2)
 			std::cout << this->_target << " robotomization failed" << std::endl;
 		else {
