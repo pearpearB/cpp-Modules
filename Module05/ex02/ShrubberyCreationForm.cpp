@@ -32,7 +32,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 	if (!ofs.is_open())
 		std::cout << this->_target << " cannot open file" << std::endl;
 	else { 
-		ofs << "              _{\\ _{\\{\\/}/}/}__                    " << std::endl;
+		ofs << "               _{\\ _{\\{\\/}/}/}__                    " << std::endl;
 		ofs << "              {/{/\\}{/{/\\}(\\}{/\\} _                " << std::endl;
 		ofs << "             {/{/\\}{/{/\\}(_)\\}{/{/\\}  _            " << std::endl;
 		ofs << "          {\\{/(\\}\\}{/{/\\}\\}{/){/\\}\\} /\\}           " << std::endl;
