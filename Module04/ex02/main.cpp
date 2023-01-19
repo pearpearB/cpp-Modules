@@ -11,6 +11,9 @@ int main() {
 		for (int i = 0; i < 4; i++)
 			delete animals[i];
 	}
+	{
+		AAnimal animal; // error: cannot declare variable 'animal' to be of abstract type 'AAnimal'
+	}
 
 	return 0;
 }
