@@ -29,9 +29,9 @@ const std::string	&RobotomyRequestForm::getTarget() const {
 /* member function */
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
 	if (!this->getIsSigned())
-		throw Form::FormNotSignedException();
+		throw AForm::FormNotSignedException();
 	if (executor.getGrade() > this->getGradeToExecute())
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	else {
 		if (!rand() % 2)
 			std::cout << this->_target << " robotomization failed" << std::endl;
