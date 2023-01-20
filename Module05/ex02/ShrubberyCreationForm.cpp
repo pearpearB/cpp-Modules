@@ -6,7 +6,6 @@ ShrubberyCreationForm::ShrubberyCreationForm(): AForm("ShrubberyCreationForm", 1
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target): AForm("ShrubberyCreationForm", 145, 137), _target(target) { }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src): AForm(src), _target(src._target) { }
-// AForm(src)하면 145, 137로 만들어질까?
 
 ShrubberyCreationForm::~ShrubberyCreationForm() { }
 

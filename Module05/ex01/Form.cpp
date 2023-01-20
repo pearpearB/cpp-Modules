@@ -17,7 +17,7 @@ Form::~Form() { }
 
 Form &Form::operator=(const Form &rhs) {
 	if (this != &rhs)
-		this->_isSigned = rhs._isSigned; // 이것만 복사하는 이유는? 과제 의도 찾기
+		this->_isSigned = rhs._isSigned;
 	return *this;
 }
 
