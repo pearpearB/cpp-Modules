@@ -19,19 +19,29 @@ Intern &Intern::operator=(const Intern &rhs) {
 /* member function */
 AForm *Intern::findForm(std::string const &formName, std::string const &target) {
 	const std::string	formNames[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
-	AForm				*forms[3] = {new ShrubberyCreationForm(target), new RobotomyRequestForm(target), new PresidentialPardonForm(target)};
-	
-	for (int i = 0; i < 3; i++) {
-		if (!formName.compare(formNames[i])) {
-			return forms[i];
+	int					idx;
+
+	for (idx = 0; idx < 4; idx++) {
+		if (!formName.compare(formNames[idx])) {
+			break;
 		}
 	}
-	throw FormNotFoundException();
+	switch (idx) {
+		case 0:
+			return new ShrubberyCreationForm(target);
+		case 1:
+			return new RobotomyRequestForm(target);
+		case 2:
+			return new PresidentialPardonForm(target);
+		default:
+			throw FormNotFoundException();
+	}
 	return NULL;
 }
 
 AForm *Intern::makeForm(std::string const &formName, std::string const &target) {
 	AForm *form;
+
 	try {
 		form = findForm(formName, target);
 		std::cout << "Intern creates " << form->getName() << std::endl;

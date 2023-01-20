@@ -70,5 +70,7 @@ int main() {
 	std::cout << "===== test invalid bureaucrat =====" << std::endl;
 	testInvalidBureaucrat();
 
+	system("leaks bureaucrat");
+
 	return 0;
 }
