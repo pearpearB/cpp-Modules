@@ -1,7 +1,7 @@
 #ifndef SERIALIZATION_HPP
-#define SERIALIZATION_HPP
+# define SERIALIZATION_HPP
 
-#include <iostream>
+# include <iostream>
 
 struct Data {
 	std::string data;
