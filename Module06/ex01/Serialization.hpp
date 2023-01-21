@@ -12,10 +12,10 @@ class Serialization {
 		Serialization();
 		Serialization(Serialization const &src);
 		~Serialization();
-		Serialization &operator=(Serialization const &rhs);
+		Serialization &	operator=(Serialization const &	rhs);
 
-		uintptr_t	*serialize(Data *ptr);
-		Data		*deserialize(uintptr_t *raw);
+		uintptr_t		*serialize(Data *ptr);
+		Data			*deserialize(uintptr_t *raw);
 };
 
 #endif
