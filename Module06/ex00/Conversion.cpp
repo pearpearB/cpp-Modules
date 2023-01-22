@@ -26,8 +26,7 @@ void Conversion::convertToChar(void) {
 		return ;
 	}
 	if (this->_value > std::numeric_limits<char>::min() - 1.0 && this->_value < std::numeric_limits<char>::max() + 1.0) { // 소수점 아래 버림되는 문제 해결
-		std::cout << "Non displayable" << std::endl;
-		return ;
+		throw Conversion::NonDisplayableException();
 	}
 	throw Conversion::ImpossibleException();
 }
@@ -53,7 +52,7 @@ void Conversion::convertToFloat(void) {
 		std::cout << "-inff" << std::endl;
 		return ;
 	}
-	if (this->_value > std::numeric_limits<float>::min() - 1.0 && this->_value < std::numeric_limits<float>::max() + 1.0) {
+	if (this->_value > -std::numeric_limits<float>::max() - 1.0 && this->_value < std::numeric_limits<float>::max() + 1.0) {
 		std::cout << std::setprecision(6) << static_cast<float>(this->_value) << "f" << std::endl;
 		return ;
 	}
@@ -73,7 +72,7 @@ void Conversion::convertToDouble(void) {
 		std::cout << "-inf" << std::endl;
 		return ;
 	}
-	if (this->_value > std::numeric_limits<double>::min() - 1.0 && this->_value < std::numeric_limits<double>::max() + 1.0) {
+	if (this->_value > -std::numeric_limits<double>::max() - 1.0 && this->_value < std::numeric_limits<double>::max() + 1.0) {
 		std::cout << std::setprecision(15) << static_cast<double>(this->_value) << std::endl;
 		return ;
 	}
@@ -83,6 +82,10 @@ void Conversion::convertToDouble(void) {
 /* exception */
 const char* Conversion::ImpossibleException::what() const throw() {
 	return "impossible";
+}
+
+const char* Conversion::NonDisplayableException::what() const throw() {
+	return "Non displayable";
 }
 
 /* global functions */
