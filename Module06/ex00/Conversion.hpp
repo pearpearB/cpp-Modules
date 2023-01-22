@@ -25,6 +25,10 @@ class Conversion {
 			const char* what() const throw();
 		};
 
+		class NonDisplayableException : public std::exception {
+			const char* what() const throw();
+		};
+
 };
 
 std::ostream &	operator<<(std::ostream & o, Conversion const & rhs);
