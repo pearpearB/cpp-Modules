@@ -53,7 +53,8 @@ void Conversion::convertToFloat(void) {
 		return ;
 	}
 	if (this->_value > -std::numeric_limits<float>::max() - 1.0 && this->_value < std::numeric_limits<float>::max() + 1.0) {
-		std::cout << std::setprecision(6) << static_cast<float>(this->_value) << "f" << std::endl;
+		float castF = static_cast<float>(this->_value);
+		std::cout << std::setprecision(6) << castF << (castF == static_cast<int64_t>(castF) ? ".0f" : "f") << std::endl;
 		return ;
 	}
 	throw Conversion::ImpossibleException();
@@ -73,7 +74,8 @@ void Conversion::convertToDouble(void) {
 		return ;
 	}
 	if (this->_value > -std::numeric_limits<double>::max() - 1.0 && this->_value < std::numeric_limits<double>::max() + 1.0) {
-		std::cout << std::setprecision(15) << static_cast<double>(this->_value) << std::endl;
+		double castD = static_cast<double>(this->_value);
+		std::cout << std::setprecision(15) << castD << (castD == static_cast<int64_t>(castD) ? ".0" : "") << std::endl;
 		return ;
 	}
 	throw Conversion::ImpossibleException();
