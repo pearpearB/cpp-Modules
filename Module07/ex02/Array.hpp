@@ -38,3 +38,4 @@ class Array {
 		unsigned int size() const { return _size; }
 };
 
+#endif
