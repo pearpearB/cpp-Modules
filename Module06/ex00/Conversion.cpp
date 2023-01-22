@@ -25,7 +25,7 @@ void Conversion::convertToChar(void) {
 		std::cout << "'" << static_cast<char>(this->_value) << "'" << std::endl;
 		return ;
 	}
-	if (this->_value > std::numeric_limits<char>::min() - 1.0 && this->_value < std::numeric_limits<char>::max() + 1.0) { // 소수점 아래 버림되는 문제 해결
+	if (this->_value >= std::numeric_limits<u_char>::min() && this->_value <= std::numeric_limits<char>::max()) {
 		throw Conversion::NonDisplayableException();
 	}
 	throw Conversion::ImpossibleException();
