@@ -1,7 +1,7 @@
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
 
-# include <exception>
+# include <iostream>
 
 template <typename T>
 class Array {
@@ -31,11 +31,15 @@ class Array {
 
 		T &operator[](unsigned int i) {
 			if (i >= _size)
-				throw std::exception();
+				throw OutOfRangeException();
 			return _array[i];
 		}
 
 		unsigned int size() const { return _size; }
+
+		class OutOfRangeException : public std::exception {
+			const char *what() const throw() { return "Index is Out of range"; }
+		};
 };
 
 #endif
