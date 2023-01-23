@@ -1,13 +1,11 @@
 #include "iter.hpp"
 
-void print(int const &i) {
-	std::cout << i << std::endl;
-}
-
 int main(void) {
-	int array[] = {1, 2, 3, 4, 5};
+	int 		array1[] = {1, 2, 3, 4, 5};
+	std::string	array2[5] = {"one", "two", "three", "four", "five"};
 
-	iter(array, 5, print);
+	::iter(array1, 5, print);
+	::iter(array2, 5, print);
 
 	return 0;
 }
