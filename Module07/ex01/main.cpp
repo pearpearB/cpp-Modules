@@ -1,5 +1,4 @@
 #include "iter.hpp"
-#include <iostream>
 
 void print(int const &i) {
 	std::cout << i << std::endl;
