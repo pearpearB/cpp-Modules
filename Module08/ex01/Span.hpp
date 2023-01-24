@@ -5,6 +5,11 @@
 # include <algorithm>
 # include <vector>
 
+template <typename T>
+T const &min(T const &a, T const &b) {
+	return (a < b ? a : b);
+}
+
 class Span {
 	private:
 		std::vector<int>	_container;

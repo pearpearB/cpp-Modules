@@ -38,9 +38,7 @@ int Span::shortestSpan() {
 
 	int					min = tmp[1] - tmp[0];
 	for (unsigned int i = 1; i < tmp.size() - 1; i++) {
-		int	compare = tmp[i + 1] - tmp[i];
-		if (compare < min) 
-			min = compare;
+		min = ::min(min, tmp[i + 1] - tmp[i]);
 	}
 	return min;
 }
