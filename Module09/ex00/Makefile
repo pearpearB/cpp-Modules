@@ -1,4 +1,4 @@
-NAME = bitcoin
+NAME = btc
 
 CXX = c++
 
