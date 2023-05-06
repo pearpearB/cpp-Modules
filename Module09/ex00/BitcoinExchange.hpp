@@ -37,4 +37,6 @@ class BitcoinExchange
 		void execute();
 };
 
+// std::ostream &operator<<(std::ostream &o, std::map<std::string, float> const &rhs);
+
 #endif

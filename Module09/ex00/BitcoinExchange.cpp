@@ -47,7 +47,7 @@ std::pair<std::string, float> BitcoinExchange::parseTargetLine(std::string line)
 	size_t pos = line.find(" | ");
 
 	if (pos == std::string::npos)
-		throw std::invalid_argument("1bad input => " + line);
+		throw std::invalid_argument("bad input => " + line);
 
 	std::string date = checkValidDate(line.substr(0, pos));
 	float value = checkValidValue(line.substr(pos + 3));
@@ -57,25 +57,27 @@ std::pair<std::string, float> BitcoinExchange::parseTargetLine(std::string line)
 
 std::string BitcoinExchange::checkValidDate(std::string date) {
 	if (date.length() != 10)
-		throw std::invalid_argument("2bad input => " + date);
+		throw std::invalid_argument("bad input => " + date);
 	if (date[4] != '-' || date[7] != '-')
-		throw std::invalid_argument("3bad input => " + date);
+		throw std::invalid_argument("bad input => " + date);
 	if(stoi(date.substr(5, 2)) > 12 || stoi(date.substr(8, 2)) > 31)
-		throw std::invalid_argument("4bad input => " + date);
+		throw std::invalid_argument("bad input => " + date);
 	return date;
 }
 
 float BitcoinExchange::checkValidValue(std::string value) {
 	if (value.length() == 0)
-		throw std::invalid_argument("5bad input => " + value);
+		throw std::invalid_argument("bad input => " + value);
 	
 	size_t dotPos = value.find(".");
 	if (value.find(".", dotPos + 1) != std::string::npos)
-		throw std::invalid_argument("6bad input => " + value);
+		throw std::invalid_argument("bad input => " + value);
 	
 	size_t minusPos = value.find("-");
 	if (minusPos != std::string::npos && minusPos != 0)
-		throw std::invalid_argument("7bad input => " + value);
+		throw std::invalid_argument("bad input => " + value);
+	if (dotPos != std::string::npos && value.substr(dotPos + 1).length() > 6)
+		throw std::invalid_argument("bad input => " + value);
 
 	for (size_t i = 0; i < value.length(); i++) {
 		if (i == dotPos)
@@ -83,11 +85,8 @@ float BitcoinExchange::checkValidValue(std::string value) {
 		if (i == minusPos)
 			continue ;
 		if (!isdigit(value[i]))
-			throw std::invalid_argument("8bad input => " + value);
+			throw std::invalid_argument("bad input => " + value);
 	}
-
-	if (dotPos != std::string::npos && value.substr(dotPos + 1).length() > 6)
-		throw std::invalid_argument("too long decimal.");
 
 	double dValue = std::stod(value);
 	if (dValue > 1000)
@@ -106,16 +105,22 @@ void BitcoinExchange::printResult(std::pair<std::string, float> data) {
   if (it->first != data.first)
     it--;
 
-	float result = it->second * data.second;
+	double result = static_cast<double>(it->second) * static_cast<double>(data.second);
+	std::stringstream ss;
+	ss << result;
+	std::string stringResult = ss.str();
 
-	std::cout << data.first << " => " << data.second << " = " << result << std::endl;
+	std::cout << data.first << " => " << data.second << " = ";
+	if (stringResult.find("e+") != std::string::npos) {
+		std::cout << std::fixed << std::setprecision(6) << result << std::endl;
+	} else {
+		std::cout << result << std::endl;
+	}
 }
 
 void BitcoinExchange::execute() {
 	std::ifstream ifs;
 	std::string buf;
-	std::string date;
-	std::string value;
 
 	ifs.open(_targetFilename);
 	if (!ifs) {
@@ -128,6 +133,7 @@ void BitcoinExchange::execute() {
 		try {
 			std::pair<std::string, float> data = parseTargetLine(buf);
 			printResult(data);
+			// std::cout << target << std::endl;
 		} catch (std::exception &e) {
 			std::cout << "Error: " << e.what() << std::endl;
 		}
