@@ -38,7 +38,7 @@ std::map<std::string, float> BitcoinExchange::parseData(std::string filename) {
     std::string date = buf.substr(0, pos);
     std::string value = buf.substr(pos + 1);
 
-		data[date] = std::stof(value);
+		data[date] = std::strtof(value.c_str(), NULL);
 	}
 
 	ifs.close();
@@ -70,33 +70,18 @@ std::string BitcoinExchange::checkValidDate(std::string date) {
 float BitcoinExchange::checkValidValue(std::string value) {
 	if (value.length() == 0)
 		throw std::invalid_argument("bad input => " + value);
-	
-	size_t dotPos = value.find(".");
-	if (value.find(".", dotPos + 1) != std::string::npos)
-		throw std::invalid_argument("bad input => " + value);
-	if (dotPos != std::string::npos && value.substr(dotPos + 1).length() > 6)
-		throw std::invalid_argument("bad input => " + value);
-	
-	size_t minusPos = value.find("-");
-	if (minusPos != std::string::npos && minusPos != 0)
-		throw std::invalid_argument("bad input => " + value);
 
-	for (size_t i = 0; i < value.length(); i++) {
-		if (i == dotPos)
-			continue ;
-		if (i == minusPos)
-			continue ;
-		if (!isdigit(value[i]))
-			throw std::invalid_argument("bad input => " + value);
-	}
+	char* endptr;
+	float fValue = std::strtof(value.c_str(), &endptr);
 
-	double dValue = std::stod(value);
-	if (dValue > 1000)
+	if (*endptr != '\0')
+		throw std::invalid_argument("bad input => " + value);
+	if (fValue > 1000)
 		throw std::invalid_argument("too large a number.");
-	if (dValue < 0)
+	if (fValue < 0)
 		throw std::invalid_argument("not a positive number.");
 
-	return std::stof(value);
+	return fValue;
 }
 
 void BitcoinExchange::printResult(std::pair<std::string, float> data) {
