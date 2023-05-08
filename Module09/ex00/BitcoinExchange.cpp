@@ -58,12 +58,26 @@ std::pair<std::string, float> BitcoinExchange::parseTargetLine(std::string line)
 }
 
 std::string BitcoinExchange::checkValidDate(std::string date) {
-	if (date.length() != 10)
+	std::stringstream ss(date, std::ios_base::in);
+	int year, month, day;
+	char sep;
+
+	ss >> year >> sep >> month >> sep >> day;
+	if (date.length() != 10 || ss.fail() || ss.get() != EOF || sep != '-')
 		throw std::invalid_argument("bad input => " + date);
-	if (date[4] != '-' || date[7] != '-')
-		throw std::invalid_argument("bad input => " + date);
-	if(stoi(date.substr(5, 2)) > 12 || stoi(date.substr(8, 2)) > 31)
-		throw std::invalid_argument("bad input => " + date);
+	
+	struct tm timeinfo;
+	time_t t;
+
+	memset(&timeinfo, 0, sizeof(struct tm));
+	timeinfo.tm_year = year - 1900;
+  timeinfo.tm_mon = month - 1;
+  timeinfo.tm_mday = day;
+	t = std::mktime(&timeinfo);
+
+	if (t == -1 || timeinfo.tm_year != year - 1900 || timeinfo.tm_mon != month - 1 || timeinfo.tm_mday != day)
+    throw std::invalid_argument("bad input => " + date);
+
 	return date;
 }
 
