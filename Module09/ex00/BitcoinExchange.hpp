@@ -29,14 +29,8 @@ class BitcoinExchange
 		BitcoinExchange(char *target, std::string data);
 		BitcoinExchange(const BitcoinExchange &ref);
 		~BitcoinExchange();
-		BitcoinExchange &operator=(const BitcoinExchange &ref);
-
-		std::map<std::string, float> get_Data() const;
-		std::pair<std::string, float> getData() const;
 
 		void execute();
 };
-
-// std::ostream &operator<<(std::ostream &o, std::map<std::string, float> const &rhs);
 
 #endif

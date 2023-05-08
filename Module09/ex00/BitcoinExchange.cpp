@@ -133,7 +133,7 @@ void BitcoinExchange::execute() {
 		try {
 			std::pair<std::string, float> data = parseTargetLine(buf);
 			printResult(data);
-			// std::cout << target << std::endl;
+
 		} catch (std::exception &e) {
 			std::cout << "Error: " << e.what() << std::endl;
 		}
@@ -141,4 +141,3 @@ void BitcoinExchange::execute() {
 
 	ifs.close();
 }
-
