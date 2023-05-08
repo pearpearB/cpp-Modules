@@ -1,5 +1,7 @@
 #include "BitcoinExchange.hpp"
 
+BitcoinExchange::BitcoinExchange() {}
+
 BitcoinExchange::BitcoinExchange(char *target, std::string data) : _dataFilename(data), _targetFilename(target) {
 	this->_data = parseData(_dataFilename);
 }
@@ -72,11 +74,11 @@ float BitcoinExchange::checkValidValue(std::string value) {
 	size_t dotPos = value.find(".");
 	if (value.find(".", dotPos + 1) != std::string::npos)
 		throw std::invalid_argument("bad input => " + value);
+	if (dotPos != std::string::npos && value.substr(dotPos + 1).length() > 6)
+		throw std::invalid_argument("bad input => " + value);
 	
 	size_t minusPos = value.find("-");
 	if (minusPos != std::string::npos && minusPos != 0)
-		throw std::invalid_argument("bad input => " + value);
-	if (dotPos != std::string::npos && value.substr(dotPos + 1).length() > 6)
 		throw std::invalid_argument("bad input => " + value);
 
 	for (size_t i = 0; i < value.length(); i++) {
@@ -100,22 +102,14 @@ float BitcoinExchange::checkValidValue(std::string value) {
 void BitcoinExchange::printResult(std::pair<std::string, float> data) {
 	std::map<std::string, float>::iterator it = _data.lower_bound(data.first);
 
-	if (it == _data.begin())
+	if (it == _data.begin() && it->first != data.first)
     throw std::invalid_argument("no such date.");
-  if (it->first != data.first)
+  else if (it->first != data.first)
     it--;
 
-	double result = static_cast<double>(it->second) * static_cast<double>(data.second);
-	std::stringstream ss;
-	ss << result;
-	std::string stringResult = ss.str();
+	float result = it->second * data.second;
 
-	std::cout << data.first << " => " << data.second << " = ";
-	if (stringResult.find("e+") != std::string::npos) {
-		std::cout << std::fixed << std::setprecision(6) << result << std::endl;
-	} else {
-		std::cout << result << std::endl;
-	}
+	std::cout << data.first << " => " << data.second << " = " << result << std::endl;
 }
 
 void BitcoinExchange::execute() {

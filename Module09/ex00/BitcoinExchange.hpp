@@ -12,7 +12,6 @@
 class BitcoinExchange
 {
 	private:
-		std::pair<std::string, float> data;
 		std::map<std::string, float> _data;
 		std::string _dataFilename;
 		std::string _targetFilename;
@@ -26,8 +25,10 @@ class BitcoinExchange
 		void printResult(std::pair<std::string, float> data);
 
 	public:
+		BitcoinExchange();
 		BitcoinExchange(char *target, std::string data);
 		BitcoinExchange(const BitcoinExchange &ref);
+		BitcoinExchange &operator=(const BitcoinExchange &ref);
 		~BitcoinExchange();
 
 		void execute();
