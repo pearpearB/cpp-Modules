@@ -4,7 +4,7 @@ int  main(int argc, char **argv)
 {
 		if (argc != 2)
 		{
-			std::cout << FILEOPEN_ERROR << std::endl;
+			std::cout << FILEOPEN_ERR << std::endl;
 			exit (EXIT_FAILURE);
 		}
 		

@@ -7,7 +7,11 @@
 #include <cctype>
 #include <map>
 
-#define FILEOPEN_ERROR "Error: could not open file."
+#define FILEOPEN_ERR "Error: could not open file."
+#define INPUT_ERR "Error: bad input => "
+#define TOOLARGEVALUE_ERR "Error: too large a number."
+#define NOTPOSITIVE_ERR "Error: not a positive number."
+#define NODATE_ERR "Error: no such date."
 
 class BitcoinExchange
 {
