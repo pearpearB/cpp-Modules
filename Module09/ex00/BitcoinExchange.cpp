@@ -86,16 +86,16 @@ float BitcoinExchange::checkValidValue(std::string value) {
 		throw std::invalid_argument(INPUT_ERR + value);
 
 	char* endptr;
-	float fValue = std::strtof(value.c_str(), &endptr);
+	double dValue = std::strtod(value.c_str(), &endptr);
 
 	if (*endptr != '\0')
 		throw std::invalid_argument(INPUT_ERR + value);
-	if (fValue > 1000)
+	if (dValue > 1000)
 		throw std::invalid_argument(TOOLARGEVALUE_ERR);
-	if (fValue < 0)
+	if (dValue < 0)
 		throw std::invalid_argument(NOTPOSITIVE_ERR);
 
-	return fValue;
+	return static_cast<float>(dValue);
 }
 
 void BitcoinExchange::printResult(std::pair<std::string, float> data) {
