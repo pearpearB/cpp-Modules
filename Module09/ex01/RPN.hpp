@@ -6,6 +6,8 @@
 #include <sstream>
 #include <iostream>
 
+#define INVALIDINPUT_ERR "Invalid input"
+#define ZeroDivision_ERR "cannot divide by zero."
 
 class RPN
 {

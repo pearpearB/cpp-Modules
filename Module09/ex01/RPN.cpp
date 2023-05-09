@@ -26,7 +26,7 @@ int RPN::calc(int A, int B, char op) {
 			return A * B;
 		case '/': {
 			if (A == 0) 
-				throw std::invalid_argument("cannot divide by zero.");
+				throw std::invalid_argument(ZeroDivision_ERR);
 			return B / A;
 		}
 	}
@@ -43,10 +43,10 @@ void RPN::execute()
 		if (isdigit(_expr[i]))
 			_stack.push(_expr[i] - '0');
 		else if (operators.find(_expr[i]) == std::string::npos)
-			throw std::invalid_argument("Invalid input");
+			throw std::invalid_argument(INVALIDINPUT_ERR);
 		else {
 			if (_stack.size() < 2)
-				throw std::invalid_argument("Invalid input");
+				throw std::invalid_argument(INVALIDINPUT_ERR);
 			int A = _stack.top();
 			_stack.pop();
 			_stack.top() = calc(A, _stack.top(), _expr[i]);
@@ -54,7 +54,7 @@ void RPN::execute()
 	}
 
 	if (_stack.size() != 1)
-		throw std::invalid_argument("Invalid input");
+		throw std::invalid_argument(INVALIDINPUT_ERR);
 
 	std::cout << _stack.top() << std::endl;
 }
