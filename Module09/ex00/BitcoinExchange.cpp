@@ -60,10 +60,10 @@ std::pair<std::string, float> BitcoinExchange::parseTargetLine(std::string line)
 std::string BitcoinExchange::checkValidDate(std::string date) {
 	std::stringstream ss(date, std::ios_base::in);
 	int year, month, day;
-	char sep;
+	char sep1, sep2;
 
-	ss >> year >> sep >> month >> sep >> day;
-	if (date.length() != 10 || ss.fail() || ss.get() != EOF || sep != '-')
+	ss >> year >> sep1 >> month >> sep2 >> day;
+	if (date.length() != 10 || ss.fail() || ss.get() != EOF || sep1 != '-' || sep2 != '-')
 		throw std::invalid_argument(INPUT_ERR + date);
 	
 	struct tm timeinfo;
