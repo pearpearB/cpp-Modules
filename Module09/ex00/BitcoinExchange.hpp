@@ -4,7 +4,6 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
-#include <cctype>
 #include <map>
 
 #define FILEOPEN_ERR "Error: could not open file."
