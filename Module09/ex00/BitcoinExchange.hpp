@@ -22,10 +22,8 @@ class BitcoinExchange
 
 		std::map<std::string, float> parseData(std::string filename);
 		std::pair<std::string, float> parseTargetLine(std::string line);
-
 		std::string checkValidDate(std::string date);
 		float checkValidValue(std::string value);
-
 		void printResult(std::pair<std::string, float> data);
 
 	public:
