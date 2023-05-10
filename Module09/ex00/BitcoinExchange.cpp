@@ -38,7 +38,7 @@ std::map<std::string, float> BitcoinExchange::parseData(std::string filename) {
     std::string date = buf.substr(0, pos);
     std::string value = buf.substr(pos + 1);
 
-		data[date] = std::strtof(value.c_str(), NULL);
+		data[date] = static_cast<float>(std::strtod(value.c_str(), NULL));
 	}
 
 	ifs.close();
